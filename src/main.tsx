@@ -9,14 +9,16 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
+// @ts-expect-error some thing wrong
 import "./styles.css";
-import reportWebVitals from "./reportWebVitals.js";
+import reportWebVitals from "./reportWebVitals";
 
-import App from "./App.jsx";
-import { BlueskyAuthProvider } from "./providers/bluesky-provider.js";
+import App from "./App";
+import { BlueskyAuthProvider } from "./providers/bluesky-provider";
 import { Toaster } from "react-hot-toast";
 
-import HypercertsListPage from "./ListingPage.js";
+import HypercertsListPage from "./ListingPage";
+import React from "react";
 
 const rootRoute = createRootRoute({
   component: () => (
