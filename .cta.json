@@ -1,0 +1,11 @@
+{
+  "projectName": "maearth",
+  "mode": "code-router",
+  "typescript": false,
+  "tailwind": true,
+  "packageManager": "pnpm",
+  "git": true,
+  "version": 1,
+  "framework": "react-cra",
+  "chosenAddOns": []
+}
