@@ -1,8 +1,8 @@
 {
-  "client_id": "https://109468d7e0f7.ngrok-free.app/client-metadata.json",
+  "client_id": "https://maearth-test.vercel.app/client-metadata.json",
   "client_name": "GainForest",
-  "client_uri": "https://109468d7e0f7.ngrok-free.app",
-  "redirect_uris": ["https://109468d7e0f7.ngrok-free.app"],
+  "client_uri": "https://maearth-test.vercel.app",
+  "redirect_uris": ["https://maearth-test.vercel.app"],
   "scope": "atproto transition:generic",
   "grant_types": ["authorization_code", "refresh_token"],
   "response_types": ["code"],
