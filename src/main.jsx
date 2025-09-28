@@ -14,11 +14,15 @@ import reportWebVitals from "./reportWebVitals.js";
 
 import App from "./App.jsx";
 import { BlueskyAuthProvider } from "./providers/bluesky-provider.js";
+import { Toaster } from "react-hot-toast";
+
+import HypercertsListPage from "./ListingPage.js";
 
 const rootRoute = createRootRoute({
   component: () => (
     <>
       <BlueskyAuthProvider>
+        <Toaster />
         <Outlet />
         <TanStackRouterDevtools />
       </BlueskyAuthProvider>
@@ -32,7 +36,15 @@ const indexRoute = createRoute({
   component: App,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute]);
+// ✅ NEW: /hypercerts route
+const hypercertsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/listing",
+  component: HypercertsListPage,
+});
+
+// Add both routes to the tree
+const routeTree = rootRoute.addChildren([indexRoute, hypercertsRoute]);
 
 const router = createRouter({
   routeTree,
@@ -53,7 +65,4 @@ if (rootElement && !rootElement.innerHTML) {
   );
 }
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

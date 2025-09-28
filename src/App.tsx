@@ -3,6 +3,7 @@ import React from "react";
 import { useBlueskyAuth } from "./providers/bluesky-provider";
 import CreateHypercertForm, { type ImpactClaim } from "./components/Form";
 import { createImpactClaim } from "./api/create-impact";
+import toast from "react-hot-toast";
 
 /**
  * =====================
@@ -38,6 +39,7 @@ function App() {
       console.log("creating impact claim");
       if (!session) return;
       await createImpactClaim(session, record);
+      toast.success("Created Impact Claim!");
     },
     [session]
   );
