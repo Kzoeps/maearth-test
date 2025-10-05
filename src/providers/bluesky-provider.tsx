@@ -69,7 +69,7 @@ export function BlueskyAuthProvider({ children }: PropsWithChildren) {
         console.log("trying to boot");
         clientRef.current = new BrowserOAuthClient({
           clientMetadata: METADATA,
-          handleResolver: "https://hypercerts.climateai.org",
+          handleResolver: "https://bsky.social",
         });
         console.log("boot passed");
 
