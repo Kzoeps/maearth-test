@@ -69,7 +69,7 @@ export function BlueskyAuthProvider({ children }: PropsWithChildren) {
         console.log("trying to boot");
         clientRef.current = new BrowserOAuthClient({
           clientMetadata: METADATA,
-          handleResolver: "https://bsky.social",
+          handleResolver: "https://hypercerts.climateai.org",
         });
         console.log("boot passed");
 
@@ -100,7 +100,7 @@ export function BlueskyAuthProvider({ children }: PropsWithChildren) {
       const c = clientRef.current;
       if (!c) throw new Error("OAuth client not ready");
       // NOTE: This redirects away and the Promise never resolves (by design).
-      return c.signIn(handleOrDidOrPds, {
+      return c.signIn("https://hypercerts.climateai.org", {
         state: opts?.state,
       });
     },
