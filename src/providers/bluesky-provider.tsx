@@ -102,6 +102,8 @@ export function BlueskyAuthProvider({ children }: PropsWithChildren) {
       // NOTE: This redirects away and the Promise never resolves (by design).
       return c.signIn("https://hypercerts.climateai.org", {
         state: opts?.state,
+        //@ts-expect-error login_hint test by adding it.
+        login_hint: "kzoepa@hypercerts.org",
       });
     },
     []
