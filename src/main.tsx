@@ -19,6 +19,8 @@ import { Toaster } from "react-hot-toast";
 
 import HypercertsListPage from "./ListingPage";
 import React from "react";
+import EmailLogin from "./EmailLogin";
+import CertsEmailList from "./ListingPageATP";
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -45,8 +47,25 @@ const hypercertsRoute = createRoute({
   component: HypercertsListPage,
 });
 
+const emailLoginRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/email-login",
+  component: EmailLogin,
+});
+
+const listingViaEmailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/listing-via-email",
+  component: CertsEmailList,
+});
+
 // Add both routes to the tree
-const routeTree = rootRoute.addChildren([indexRoute, hypercertsRoute]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  hypercertsRoute,
+  emailLoginRoute,
+  listingViaEmailRoute,
+]);
 
 const router = createRouter({
   routeTree,

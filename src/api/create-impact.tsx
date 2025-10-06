@@ -1,4 +1,4 @@
-import {
+import AtpAgent, {
   Agent,
   ComAtprotoRepoGetRecord,
   ComAtprotoRepoListRecords,
@@ -48,6 +48,30 @@ export const createImpactClaim = async (
   }
 };
 
+export const createImpactClaimviaAtpAgent = async (
+  agent: AtpAgent,
+  claim: ImpactClaim
+) => {
+  try {
+    const record = {
+      $type: IMPACT_CLAIM_COLLECTION,
+      ...claim,
+    };
+    const res = await agent.com.atproto.repo.putRecord({
+      repo: agent.assertDid,
+      collection: IMPACT_CLAIM_COLLECTION,
+      rkey: crypto.randomUUID(),
+      record,
+      validate: false,
+    });
+    console.log("created impact claim");
+    console.log(res);
+  } catch (e) {
+    console.error("error createing impact claim ", e);
+    throw e;
+  }
+};
+
 // ✅ NEW: list API with cursor pagination
 export type ListImpactClaimsResult = {
   items: (ImpactClaim & { uri: string })[];
@@ -65,6 +89,27 @@ export async function listImpactClaims(
     limit: opts?.limit ?? 20,
     cursor: opts?.cursor ?? undefined,
     reverse: opts?.reverse ?? true, // newest first by rkey
+  });
+
+  return {
+    items: formatListRecordsResponse(res) as any,
+    cursor: res.data.cursor ?? null,
+  };
+}
+
+export async function listImpactClaimsViaAtpAgent(
+  agent: AtpAgent,
+  opts?: { limit?: number; cursor?: string | null; reverse?: boolean }
+): Promise<ListImpactClaimsResult> {
+  if (!agent.session?.did) {
+    throw new Error("Not logged in");
+  }
+  const res = await agent.com.atproto.repo.listRecords({
+    repo: agent.assertDid,
+    collection: IMPACT_CLAIM_COLLECTION,
+    limit: opts?.limit ?? 20,
+    cursor: opts?.cursor ?? undefined,
+    reverse: opts?.reverse ?? true,
   });
 
   return {
