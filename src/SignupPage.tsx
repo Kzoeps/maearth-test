@@ -19,7 +19,7 @@ function isEmail(s: string) {
 
 async function createAccount(payload: {
   email: string;
-  handle: string; // username.hypercerts.org
+  handle: string; // username.hypercerts.climateai.org
   password: string;
 }) {
   const res = await fetch("/api/createAccount", {
@@ -54,7 +54,7 @@ export default function SignupPage() {
 
   const handle = useMemo(() => {
     if (!username) return "";
-    return `${username}.hypercerts.org`;
+    return `${username}.hypercerts.climateai.org`;
   }, [username]);
 
   const canSubmit =
@@ -120,7 +120,8 @@ export default function SignupPage() {
           </h1>
           <p className="mt-2 text-sm text-zinc-400">
             Your handle will be{" "}
-            <code className="font-mono">username.hypercerts.org</code>.
+            <code className="font-mono">username.hypercerts.climateai.org</code>
+            .
           </p>
         </header>
 
@@ -178,8 +179,8 @@ export default function SignupPage() {
                 Your handle will be{" "}
                 <code className="font-mono">
                   {username
-                    ? `${username}.hypercerts.org`
-                    : "yourname.hypercerts.org"}
+                    ? `${username}.hypercerts.climateai.org`
+                    : "yourname.hypercerts.climateai.org"}
                 </code>
               </p>
               {username.length > 0 && username.length < 3 && (
