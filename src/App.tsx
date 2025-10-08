@@ -114,18 +114,14 @@ function App() {
                   htmlFor="bsky"
                   className="block text-xs uppercase tracking-wide text-zinc-400 mb-2"
                 >
-                  Hypercerts handle
+                  Hypercerts handle | Email
                 </label>
                 <div className="relative">
-                  <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500">
-                    @
-                  </span>
                   <input
                     id="bsky"
                     type="text"
                     autoCapitalize="none"
                     autoCorrect="off"
-                    placeholder="yourname.hypercerts.climateai.org"
                     className="w-full rounded-2xl border border-white/20 bg-white/10 pl-8 pr-3 py-3 outline-none focus:ring-2 focus:ring-sky-400/60 focus:border-transparent placeholder:text-zinc-400 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]"
                     value={handle}
                     onChange={(e) => setHandle(e.target.value)}
@@ -136,7 +132,7 @@ function App() {
                   <code className="font-mono">
                     yourname.hypercerts.climateai.org
                   </code>
-                  ).
+                  ). or Your email <code>kzoepa@hypercerts.org</code>
                 </p>
               </div>
 
