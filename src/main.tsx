@@ -21,6 +21,7 @@ import HypercertsListPage from "./ListingPage";
 import React from "react";
 import EmailLogin from "./EmailLogin";
 import CertsEmailList from "./ListingPageATP";
+import SignupPage from "./SignupPage";
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -47,6 +48,12 @@ const hypercertsRoute = createRoute({
   component: HypercertsListPage,
 });
 
+const signupRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/signup",
+  component: SignupPage,
+});
+
 const emailLoginRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/email-login",
@@ -65,6 +72,7 @@ const routeTree = rootRoute.addChildren([
   hypercertsRoute,
   emailLoginRoute,
   listingViaEmailRoute,
+  signupRoute,
 ]);
 
 const router = createRouter({
