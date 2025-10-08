@@ -84,12 +84,15 @@ export function BlueskyAuthProvider({ children }: PropsWithChildren) {
 
     async function boot() {
       try {
+        console.log("booting");
         clientRef.current = new BrowserOAuthClient({
           clientMetadata: METADATA,
-          // removed hardcoded handleResolver / PDS — let the client resolve normally
+          handleResolver: "https://hypercerts.climateai.org",
         });
+        console.log("booted");
 
         const result = await clientRef.current.init();
+        console.log("inited", { result });
         if (!cancelled && result?.session) {
           setSession(result.session);
           // @ts-expect-error: state is transient and may be present post-auth
